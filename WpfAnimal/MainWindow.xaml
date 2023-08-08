@@ -1,0 +1,85 @@
+﻿<Window x:Class="WpfAnimal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAnimal"
+        mc:Ignorable="d"
+        Title="Animals" Height="1080" Width="1920" WindowState="Maximized" Icon="Icons/animals2.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image x:Name="background" Grid.Column="2" Source="Icons/bg1_ters.jpg" Stretch="Fill"></Image>
+        <StackPanel Grid.Column="0" Background="#bbbec3"></StackPanel>
+        <StackPanel Grid.Column="1" Width="350" Background="#bbbec3">
+            <Image Width="150" Height="150" Margin="40,40,50,40" Source="Icons/animals2.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+            <StackPanel >
+                <ListView Name="AnimalList" Grid.Column="1" Background="#bbbec3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="800" MouseEnter="AnimalList_MouseEnter">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Grid.Column="1" Grid.Row="1" >
+                                <Rectangle  Fill="#242e36"  Width="310" Height="120" RadiusX="10" RadiusY="10"></Rectangle>
+                                <TextBlock x:Name="asd" Text="{Binding Name}" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                                <Rectangle Margin="10,10,10,10" Width="90" Height="90" HorizontalAlignment="Left" RadiusX="100" RadiusY="100">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding thumb}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Column="2" x:Name="imagePanel">
+            <Border.Background>
+                <ImageBrush ImageSource="Icons/bg1_ters.png"/>
+            </Border.Background>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <Image x:Name="animalImage" Grid.Row="0" Grid.Column="2" Margin="0,50,0,0" Width="800" Height="540" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                </StackPanel>
+                <DockPanel Grid.Column="1" Grid.Row="1" Margin="290,0,290,0">
+                    <Rectangle x:Name="btn_prev" Width="70" Height="70" MouseLeftButtonDown="btn_prev_MouseLeftButtonDown" >
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="prev.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="btn_next" Width="70" Height="70" MouseLeftButtonDown="btn_next_MouseLeftButtonDown" HorizontalAlignment="Right">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="next.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </DockPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2">
+                    <TextBlock x:Name="txt_description" Text="{Binding Description}" Foreground="Black" FontSize="25"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <Label HorizontalAlignment="Right" x:Name="pageCount" Foreground="White" FontSize="50" Margin="0,120,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WpfAnimal.UControl.Images"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAnimal.UControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1570">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border  Grid.Row="0">
+            <DataGrid BorderBrush="{x:Null}" BorderThickness="0" Background="Red"></DataGrid>
+
+        </Border>
+
+        <Border Background="White" Margin="0,630,0,0" Grid.RowSpan="2">
+
+            <StackPanel Orientation="Horizontal">
+                <Button  Content="previous"></Button>
+                <Button Content="Next" Margin="1475,0,0,0"></Button>
+            </StackPanel>
+
+        </Border>
+        <Grid x:Name="AnimalList" Grid.Column="1" Grid.Row="1" >
+            <Rectangle Fill="#242e36"  Width="310" Height="120" RadiusX="20" RadiusY="20"></Rectangle>
+            <TextBlock Text="asdfs" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>
